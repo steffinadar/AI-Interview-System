@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+            color:white;
+        }
+
+        .navbar{
+            width:100%;
+            padding:20px 50px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar h1{
+            font-size:30px;
+        }
+
+        .navbar a{
+            text-decoration:none;
+            color:white;
+            background:#ff4b2b;
+            padding:10px 20px;
+            border-radius:8px;
+        }
+
+        .hero{
+            height:85vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            text-align:center;
+            padding:20px;
+        }
+
+        .hero h2{
+            font-size:55px;
+            margin-bottom:20px;
+        }
+
+        .hero p{
+            font-size:22px;
+            max-width:700px;
+            line-height:1.6;
+            margin-bottom:30px;
+        }
+
+        .hero button{
+            padding:15px 35px;
+            border:none;
+            border-radius:10px;
+            background: linear-gradient(135deg,#ff416c,#ff4b2b);
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .hero button:hover{
+            transform:scale(1.05);
+        }
+
+        .features{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+            padding:50px;
+        }
+
+        .card{
+            width:280px;
+            background:rgba(255,255,255,0.1);
+            padding:25px;
+            border-radius:15px;
+            text-align:center;
+            backdrop-filter: blur(10px);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        .card h3{
+            margin-bottom:15px;
+            font-size:24px;
+        }
+
+        .card p{
+            color:#ddd;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1>AI Interview System</h1>
+
+        <a href="/">Logout</a>
+    </div>
+
+    <div class="hero">
+
+        <h2>Prepare Smartly with AI</h2>
+
+        <p>
+            Upload your resume, analyze your skills,
+            practice mock interviews and improve your placement chances
+            using Artificial Intelligence.
+        </p>
+
+        <button onclick="window.location.href='/upload'">
+            Start Interview Prep
+        </button>
+
+    </div>
+
+    <div class="features">
+
+        <div class="card">
+            <h3>Resume Analysis</h3>
+            <p>Analyze resumes using AI and get ATS score instantly.</p>
+        </div>
+
+        <div class="card">
+            <h3>Mock Interviews</h3>
+            <p>Practice HR and technical interviews with AI-generated questions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Skill Tracking</h3>
+            <p>Track your progress and improve weak technical areas.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
