@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Resume</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg, #0f172a, #1e293b, #2563eb);
+            overflow:hidden;
+        }
+
+        /* Background Glow */
+        .circle1,
+        .circle2{
+            position:absolute;
+            border-radius:50%;
+            filter:blur(120px);
+            z-index:-1;
+        }
+
+        .circle1{
+            width:350px;
+            height:350px;
+            background:#06b6d4;
+            top:-100px;
+            left:-100px;
+        }
+
+        .circle2{
+            width:350px;
+            height:350px;
+            background:#9333ea;
+            bottom:-100px;
+            right:-100px;
+        }
+
+        /* Glass Card */
+        .container{
+            width:500px;
+            padding:50px 40px;
+            border-radius:25px;
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,0.15);
+            box-shadow:0 8px 32px rgba(0,0,0,0.35);
+            text-align:center;
+            color:white;
+            animation:fadeIn 1s ease;
+        }
+
+        h1{
+            font-size:32px;
+            margin-bottom:10px;
+            font-weight:700;
+        }
+
+        .subtitle{
+            color:#dbeafe;
+            font-size:15px;
+            margin-bottom:35px;
+            line-height:1.6;
+        }
+
+        /* Upload Box */
+        .upload-box{
+            border:2px dashed rgba(255,255,255,0.4);
+            padding:35px;
+            border-radius:18px;
+            transition:0.3s ease;
+            margin-bottom:30px;
+            cursor:pointer;
+        }
+
+        .upload-box:hover{
+            background:rgba(255,255,255,0.08);
+            border-color:#38bdf8;
+        }
+
+        .upload-icon{
+            font-size:55px;
+            margin-bottom:15px;
+        }
+
+        .upload-text{
+            font-size:16px;
+            color:#e2e8f0;
+        }
+
+        input[type="file"]{
+            display:none;
+        }
+
+        /* Upload Button */
+        .btn{
+            width:100%;
+            padding:16px;
+            border:none;
+            border-radius:12px;
+            background:linear-gradient(135deg, #06b6d4, #2563eb);
+            color:white;
+            font-size:17px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s ease;
+            box-shadow:0 5px 20px rgba(37,99,235,0.4);
+        }
+
+        .btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 30px rgba(37,99,235,0.5);
+        }
+
+        .footer{
+            margin-top:25px;
+            font-size:13px;
+            color:#cbd5e1;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Glow Effects -->
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+    <!-- Upload Card -->
+    <div class="container">
+
+        <h1>Upload Your Resume</h1>
+
+        <p class="subtitle">
+            Get AI-powered resume analysis, skill extraction, and interview recommendations instantly.
+        </p>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            <label for="resumeUpload">
+
+                <div class="upload-box">
+
+                    <div class="upload-icon">
+                        📄
+                    </div>
+
+                    <div class="upload-text">
+                        Click to Upload Resume <br>
+                        <small>(PDF, DOCX)</small>
+                    </div>
+
+                </div>
+
+            </label>
+
+            <input type="file" id="resumeUpload" name="resume" required>
+
+            <button type="submit" class="btn">
+                Analyze Resume
+            </button>
+
+        </form>
+
+        <div class="footer">
+            AI Resume Scanner • ATS Checker • Skill Analyzer
+        </div>
+
+    </div>
+
+</body>
+</html>
