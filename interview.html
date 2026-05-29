@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Interview Session</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .start-btn {
+            background: #00c6ff;
+            color: white;
+        }
+
+        .next-btn {
+            background: #00ff88;
+            color: black;
+        }
+
+        .stop-btn {
+            background: #ff4d4d;
+            color: white;
+        }
+
+        .question-box {
+            font-size: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+        }
+
+        .timer {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #ffeb3b;
+        }
+
+        .score {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #00ff88;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 AI Mock Interview System</h1>
+    <p>Practice real interview questions and improve your skills</p>
+
+    <div class="card">
+
+        <button class="btn start-btn" onclick="startInterview()">
+            ▶ Start Interview
+        </button>
+
+        <button class="btn next-btn" onclick="nextQuestion()">
+            ➡ Next Question
+        </button>
+
+        <button class="btn stop-btn" onclick="stopInterview()">
+            ⛔ Stop
+        </button>
+
+        <div class="timer" id="timer">Timer: 00:00</div>
+
+        <div class="question-box" id="questionBox">
+            Click "Start Interview" to begin your session
+        </div>
+
+        <div class="score" id="scoreBox">
+            Score: 0
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    let questions = [
+        "Tell me about yourself.",
+        "Explain OOP concepts.",
+        "What is Python used for?",
+        "Difference between SQL and NoSQL?",
+        "What is machine learning?",
+        "Explain your final year project.",
+        "What are data structures?"
+    ];
+
+    let index = 0;
+    let score = 0;
+    let seconds = 0;
+    let timer;
+
+    function speak(text) {
+        let speech = new SpeechSynthesisUtterance(text);
+        speech.rate = 1;
+        speech.pitch = 1;
+        window.speechSynthesis.speak(speech);
+    }
+
+    function startInterview() {
+        index = 0;
+        score = 0;
+        seconds = 0;
+
+        document.getElementById("questionBox").innerText = questions[index];
+        document.getElementById("scoreBox").innerText = "Score: 0";
+
+        speak(questions[index]);
+
+        timer = setInterval(() => {
+            seconds++;
+            document.getElementById("timer").innerText =
+                "Timer: " + seconds + " sec";
+        }, 1000);
+    }
+
+    function nextQuestion() {
+        if (index < questions.length - 1) {
+            index++;
+            document.getElementById("questionBox").innerText = questions[index];
+            speak(questions[index]);
+
+            score += 10;
+            document.getElementById("scoreBox").innerText = "Score: " + score;
+        } else {
+            document.getElementById("questionBox").innerText =
+                "Interview Completed 🎉 Good Job!";
+            speak("Interview completed. Well done.");
+            clearInterval(timer);
+        }
+    }
+
+    function stopInterview() {
+        clearInterval(timer);
+        window.speechSynthesis.cancel();
+
+        document.getElementById("questionBox").innerText =
+            "Interview Stopped";
+    }
+</script>
+
+</body>
+</html>
